@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hệ Thống Quản Lý Bài Tập Lập Trình</title>
+    <button class="exit-button" onclick="goHome()">Thoát</button>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f4;
+      }
+      header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .exercise-list,
+      .exercise-details,
+      .result-section {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        position: relative; /* Để định vị được nút thoát */
+      }
+      .exercise {
+        padding: 10px;
+        border-bottom: 1px solid #dddddd;
+      }
+      .exercise:last-child {
+        border-bottom: none;
+      }
+      .button {
+        padding: 10px 15px;
+        margin-top: 10px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .button:hover {
+        background-color: #218838;
+      }
+      .code-editor {
+        margin-top: 20px;
+        background: #282c34;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        font-family: monospace;
+        overflow: auto;
+      }
+      .test-case {
+        margin-top: 10px;
+      }
+      .result {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+      .status {
+        color: green;
+      }
+      .failed {
+        color: red;
+      }
+      /* CSS cho nút Thoát */
+      .exit-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .exit-button:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Hệ Thống Quản Lý Bài Tập Lập Trình</h1>
+    </header>
+
+    <section class="exercise-list">
+      <h2>Danh Sách Bài Tập</h2>
+      <div class="exercise">
+        <h3>Bài Tập 1: Tính Tổng</h3>
+        <p>Mô tả: Viết chương trình tính tổng hai số nguyên.</p>
+        <p>Mức độ khó: Dễ | Thời gian: 30 phút | Điểm: 10</p>
+        <button class="button" onclick="selectExercise(1)">Chọn Bài Tập</button>
+      </div>
+      <div class="exercise">
+        <h3>Bài Tập 2: Tìm Số Nguyên Tố</h3>
+        <p>Mô tả: Viết chương trình kiểm tra số nguyên tố.</p>
+        <p>Mức độ khó: Trung bình | Thời gian: 45 phút | Điểm: 20</p>
+        <button class="button" onclick="selectExercise(2)">Chọn Bài Tập</button>
+      </div>
+      <!-- Thêm bài tập khác tương tự -->
+    </section>
+
+    <section
+      class="exercise-details"
+      id="exercise-details"
+      style="display: none"
+    >
+      <button class="exit-button" onclick="goHome()">Thoát</button>
+      <h2>Chi Tiết Bài Tập</h2>
+      <div id="details"></div>
+
+      <div class="code-editor" id="code-editor">
+        <h3>Môi Trường Lập Trình</h3>
+        <textarea
+          id="code"
+          rows="10"
+          cols="50"
+          placeholder="Nhập mã ở đây..."
+        ></textarea>
+        <br />
+        <button class="button" onclick="runCode()">Chạy Mã</button>
+        <button class="button" onclick="clearCode()">Xóa Mã</button>
+        <button class="button" onclick="submitCode()">Nộp Bài</button>
+      </div>
+
+      <div class="test-case">
+        <h4>Test Cases</h4>
+        <div>
+          <strong>Đầu vào:</strong>
+          <input type="text" id="inputTest" placeholder="Nhập đầu vào" />
+          <strong>Đầu ra mong đợi:</strong>
+          <input
+            type="text"
+            id="expectedOutput"
+            placeholder="Nhập đầu ra mong đợi"
+          />
+          <button class="button" onclick="addTestCase()">Thêm Test Case</button>
+        </div>
+        <div id="testCaseList"></div>
+      </div>
+
+      <div class="result-section" id="resultSection" style="display: none">
+        <h4>Kết Quả</h4>
+        <div id="resultOutput" class="result"></div>
+      </div>
+    </section>
+
+    <script>
+      const testCases = [];
+
+      function selectExercise(id) {
+        const details = {
+          1: {
+            title: "Bài Tập 1: Tính Tổng",
+            description: "Viết chương trình tính tổng hai số nguyên.",
+            constraints: "Nhập vào hai số nguyên.",
+          },
+          2: {
+            title: "Bài Tập 2: Tìm Số Nguyên Tố",
+            description: "Viết chương trình kiểm tra số nguyên tố.",
+            constraints: "Nhập vào một số nguyên dương.",
+          },
+        };
+
+        document.getElementById("details").innerHTML = `
+            <h3>${details[id].title}</h3>
+            <p>${details[id].description}</p>
+            <p>Hướng dẫn: ${details[id].constraints}</p>
+        `;
+
+        document.getElementById("exercise-details").style.display = "block";
+        document.getElementById("resultSection").style.display = "none";
+        document.getElementById("resultOutput").innerHTML = "";
+        document.getElementById("testCaseList").innerHTML = "";
+        testCases.length = 0; // Clear previous test cases
+      }
+
+      function runCode() {
+        const code = document.getElementById("code").value;
+        alert(
+          "Chức năng chạy mã sẽ thực hiện kiểm thử! (Chức năng này cần backend để hoạt động)"
+        );
+      }
+
+      function clearCode() {
+        document.getElementById("code").value = "";
+      }
+
+      function submitCode() {
+        const code = document.getElementById("code").value;
+        const result = simulateTestCases();
+        document.getElementById("resultOutput").innerHTML = result;
+        document.getElementById("resultSection").style.display = "block";
+      }
+
+      function addTestCase() {
+        const input = document.getElementById("inputTest").value;
+        const expectedOutput = document.getElementById("expectedOutput").value;
+
+        if (input && expectedOutput) {
+          testCases.push({ input, expectedOutput });
+          updateTestCaseList();
+          document.getElementById("inputTest").value = "";
+          document.getElementById("expectedOutput").value = "";
+        } else {
+          alert("Vui lòng nhập đầy đủ đầu vào và đầu ra mong đợi.");
+        }
+      }
+
+      function updateTestCaseList() {
+        const list = document.getElementById("testCaseList");
+        list.innerHTML = "";
+
+        testCases.forEach((testCase, index) => {
+          list.innerHTML += `
+                <div>
+                    Test Case ${index + 1}: 
+                    <strong>Đầu vào:</strong> ${testCase.input}, 
+                    <strong>Đầu ra mong đợi:</strong> ${testCase.expectedOutput}
+                </div>
+            `;
+        });
+      }
+
+      function simulateTestCases() {
+        let output = "";
+        testCases.forEach((testCase, index) => {
+          const actualOutput =
+            Math.random() > 0.5 ? testCase.expectedOutput : "Kết quả khác";
+          const status =
+            actualOutput === testCase.expectedOutput ? "Passed" : "Failed";
+
+          output += `
+                <div class="${status === "Passed" ? "status" : "failed"}">
+                    Test Case ${index + 1}: ${status} - 
+                    <strong>Đầu vào:</strong> ${testCase.input}, 
+                    <strong>Đầu ra mong đợi:</strong> ${
+                      testCase.expectedOutput
+                    }, 
+                    <strong>Đầu ra thực tế:</strong> ${actualOutput}
+                </div>
+            `;
+        });
+
+        return output;
+      }
+
+      function goHome() {
+        window.location.href = "home.html"; // Đường dẫn về trang chủ
+      }
+    </script>
+  </body>
+</html>
