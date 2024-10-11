@@ -3,361 +3,212 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up & Login with Menu</title>
+    <title>Login Form</title>
     <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: "Arial", sans-serif;
-      }
-
       body {
-        background: url("https://img.reintech.io/variants/s2odbtfbi1vnj0v0lpk08uk9n9fl/e7b4ce09c703210ab8f75b017c7eaf0951c5a95b737ee8120602845c1c1d944b")
-          no-repeat center center fixed;
-        background-size: cover;
-        height: 100vh;
+        font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        flex-direction: column;
+        height: 100vh;
+        background-color: #f1f1f1;
       }
 
-      .hidden {
-        display: none;
-      }
-
-      .page {
-        display: none;
-        padding: 50px;
-        background-color: rgba(255, 255, 255, 0.9);
+      .login-container {
+        width: 350px; /* Độ rộng của form */
+        padding: 20px;
+        background-color: white;
         border-radius: 10px;
-        width: 400px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
         text-align: center;
       }
 
-      .form-container {
-        background: rgba(255, 255, 255, 0.9);
-        padding: 40px;
-        border-radius: 10px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        width: 400px;
-        text-align: center;
+      .login-container h2 {
+        margin-bottom: 15px;
+        font-size: 24px; /* Kích thước chữ tiêu đề */
       }
 
-      nav {
-        width: 100%;
-        background-color: rgba(74, 144, 226, 0.8);
+      .login-container p {
+        margin: 10px 0 20px 0;
+        font-size: 14px; /* Kích thước chữ của câu hỏi */
+      }
+
+      .social-login {
         display: flex;
         justify-content: space-between;
-        padding: 10px 50px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
+        margin-bottom: 10px;
       }
 
-      nav ul {
-        list-style: none;
+      .social-login button {
+        flex: 1; /* Đảm bảo các nút có cùng kích thước */
+        padding: 10px;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px; /* Khoảng cách giữa các nút */
         display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold; /* Đậm chữ */
       }
 
-      nav ul li {
-        margin: 0 15px;
+      .social-google {
+        background-color: white;
+        color: #000000; /* Màu Google */
+        border: 1px solid #000000; /* Đường viền */
       }
 
-      nav ul li a {
-        text-decoration: none;
-        color: white;
-        font-size: 18px;
-        font-weight: bold;
-        transition: color 0.3s ease;
+      .social-facebook {
+        background-color: white; /* Màu Facebook */
+        color: #000000;
+        border: 1px solid #000000;
       }
 
-      nav ul li a:hover {
-        color: #cce0ff;
+      .social-github {
+        background-color: #ffffff; /* Màu Github */
+        color: #000000;
+        border: 1px solid #000000;
       }
 
-      .menu-right {
-        display: flex;
+      .social-more {
+        background-color: #ffffff; /* Màu more */
+        color: #000000;
+        border: 1px solid #000000;
       }
 
-      .input-field {
+      .or {
         margin: 15px 0;
-        width: 100%;
+        font-size: 14px;
       }
 
-      .input-field input,
-      .input-field select {
-        width: 100%;
-        padding: 12px 15px;
+      input[type="email"],
+      input[type="password"] {
+        width: 95%;
+        padding: 10px;
+        margin: 5px 0;
         border: 1px solid #ddd;
         border-radius: 5px;
-        font-size: 16px;
-        background: #f9f9f9;
-        outline: none;
-        transition: border 0.3s ease;
       }
 
-      .input-field input:focus,
-      .input-field select:focus {
-        border-color: #4a90e2;
-      }
-
-      .btn {
-        background-color: #4a90e2;
+      .login-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745; /* Màu nút đăng nhập */
         color: white;
-        padding: 12px 20px;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        font-size: 16px;
-        transition: background 0.3s ease;
-        width: 100%;
+        font-weight: bold; /* Đậm chữ */
       }
 
-      .btn:hover {
-        background-color: #357abd;
+      .forgot-password {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007bff; /* Màu link quên mật khẩu */
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+
+      .signup-link {
+        color: #28a745; /* Màu link đăng ký */
+        text-decoration: none;
+      }
+
+      .signup-link:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+        display: none;
       }
     </style>
-  </head>
-  <body>
-    <!-- Menu Bar -->
-    <nav>
-      <ul>
-        <li><a href="#" id="home-link" class="hidden">Home</a></li>
-        <li><a href="#" id="about-link" class="hidden">About</a></li>
-        <li><a href="#" id="labs-link" class="hidden">Labs</a></li>
-      </ul>
-      <ul class="menu-right">
-        <li><a href="#" id="login-link">Log in</a></li>
-        <li><a href="#" id="signup-link">Sign up</a></li>
-      </ul>
-    </nav>
-
-    <!-- Sign Up Form -->
-    <div class="form-container" id="signup-form" style="display: none">
-      <h2>Sign Up</h2>
-      <div class="input-field">
-        <input
-          type="text"
-          id="signup-username"
-          placeholder="Username"
-          required
-        />
-      </div>
-      <div class="input-field">
-        <input type="email" id="signup-email" placeholder="Email" required />
-      </div>
-      <div class="input-field">
-        <input
-          type="password"
-          id="signup-password"
-          placeholder="Password"
-          required
-        />
-      </div>
-      <div class="input-field">
-        <select id="signup-role" required>
-          <option value="" disabled selected>Select Role</option>
-          <option value="admin">Admin</option>
-          <option value="user">User</option>
-        </select>
-      </div>
-      <button class="btn" id="signup-btn">Sign Up</button>
-    </div>
-
-    <!-- Login Form -->
-    <div class="form-container" id="login-form">
-      <h2>Log In</h2>
-      <div class="input-field">
-        <input
-          type="text"
-          id="login-username"
-          placeholder="Username"
-          required
-        />
-      </div>
-      <div class="input-field">
-        <input
-          type="password"
-          id="login-password"
-          placeholder="Password"
-          required
-        />
-      </div>
-      <button class="btn" id="login-btn">Log In</button>
-    </div>
-
-    <!-- Home Page -->
-    <div class="page" id="home-page">
-      <h2>Welcome to the Home Page</h2>
-      <p>This is the homepage after successful login.</p>
-    </div>
-
-    <!-- About Page -->
-    <div class="page" id="about-page">
-      <h2>Personal Information</h2>
-      <p><strong>Username:</strong> <span id="display-username"></span></p>
-      <p><strong>Email:</strong> <span id="display-email"></span></p>
-      <p><strong>Role:</strong> <span id="display-role"></span></p>
-    </div>
-
-    <!-- Labs Page -->
-    <div class="page" id="labs-page">
-      <h2>Labs</h2>
-      <ul>
-        <li>
-          <a
-            href="https://asuka-hoc-code.github.io/TranXuanHung23130125/"
-            id="labs1-link"
-            >Labs 1</a
-          >
-        </li>
-        <li><a href="#" id="labs2-link">Labs 2</a></li>
-        <li><a href="#" id="labs3-link">Labs 3</a></li>
-      </ul>
-    </div>
 
     <script>
-      // DOM Elements
-      const signupForm = document.getElementById("signup-form");
-      const loginForm = document.getElementById("login-form");
-      const homePage = document.getElementById("home-page");
-      const aboutPage = document.getElementById("about-page");
-      const labsPage = document.getElementById("labs-page");
+      function handleLogin() {
+        // Lấy dữ liệu đăng nhập từ Local Storage
+        const savedEmail = localStorage.getItem("email");
+        const savedPassword = localStorage.getItem("password");
 
-      const signupBtn = document.getElementById("signup-btn");
-      const loginBtn = document.getElementById("login-btn");
+        // Lấy giá trị từ form đăng nhập
+        const emailInput = document.querySelector('input[type="email"]').value;
+        const passwordInput = document.querySelector(
+          'input[type="password"]'
+        ).value;
 
-      const loginLink = document.getElementById("login-link");
-      const signupLink = document.getElementById("signup-link");
-
-      const homeLink = document.getElementById("home-link");
-      const aboutLink = document.getElementById("about-link");
-      const labsLink = document.getElementById("labs-link");
-
-      const labs1Link = document.getElementById("labs1-link");
-      const labs2Link = document.getElementById("labs2-link");
-      const labs3Link = document.getElementById("labs3-link");
-
-      // Storing user data
-      let userData = {};
-      let isLoggedIn = false; // Track login status
-
-      // Show Signup form and hide others
-      signupLink.addEventListener("click", function () {
-        signupForm.style.display = "block";
-        loginForm.style.display = "none";
-        homePage.style.display = "none";
-        aboutPage.style.display = "none";
-        labsPage.style.display = "none";
-      });
-
-      // Show Login form and hide others
-      loginLink.addEventListener("click", function () {
-        signupForm.style.display = "none";
-        loginForm.style.display = "block";
-        homePage.style.display = "none";
-        aboutPage.style.display = "none";
-        labsPage.style.display = "none";
-      });
-
-      // Sign Up Process
-      signupBtn.addEventListener("click", function () {
-        const username = document.getElementById("signup-username").value;
-        const email = document.getElementById("signup-email").value;
-        const password = document.getElementById("signup-password").value;
-        const role = document.getElementById("signup-role").value;
-
-        if (username && email && password && role) {
-          userData = { username, email, password, role };
-          alert("Sign up successful!");
-
-          // Automatically redirect to login form after sign up
-          signupForm.style.display = "none";
-          loginForm.style.display = "block";
+        // Kiểm tra thông tin đăng nhập
+        if (emailInput === savedEmail && passwordInput === savedPassword) {
+          // Đăng nhập thành công và chuyển hướng đến trang chủ
+          window.location.href = "home.html";
         } else {
-          alert("Please fill all fields.");
+          // Hiển thị thông báo lỗi nếu đăng nhập thất bại
+          document.querySelector(".error-message").style.display = "block";
         }
-      });
-
-      // Log In Process
-      loginBtn.addEventListener("click", function () {
-        const username = document.getElementById("login-username").value;
-        const password = document.getElementById("login-password").value;
-
-        if (username === userData.username && password === userData.password) {
-          alert("Log in successful!");
-          isLoggedIn = true;
-
-          // Display Home Page after login
-          homePage.style.display = "block";
-          aboutPage.style.display = "none";
-          labsPage.style.display = "none";
-
-          // Display user information in the about page
-          document.getElementById("display-username").innerText =
-            userData.username;
-          document.getElementById("display-email").innerText = userData.email;
-          document.getElementById("display-role").innerText = userData.role;
-
-          // Show About page after login
-          aboutLink.classList.remove("hidden");
-          labsLink.classList.remove("hidden");
-          homeLink.classList.remove("hidden");
-
-          // Hide the login form
-          loginForm.style.display = "none";
-        } else {
-          alert("Invalid username or password.");
-        }
-      });
-
-      // Lab Links
-      labs1Link.addEventListener("click", function () {
-        alert("You clicked on Labs 1!");
-      });
-
-      labs2Link.addEventListener("click", function () {
-        alert("You clicked on Labs 2!");
-      });
-
-      labs3Link.addEventListener("click", function () {
-        alert("You clicked on Labs 3!");
-      });
-
-      // Show About Page
-      aboutLink.addEventListener("click", function () {
-        if (isLoggedIn) {
-          aboutPage.style.display = "block";
-          homePage.style.display = "none";
-          labsPage.style.display = "none";
-        } else {
-          alert("Please log in first.");
-        }
-      });
-
-      // Show Labs Page
-      labsLink.addEventListener("click", function () {
-        if (isLoggedIn) {
-          labsPage.style.display = "block";
-          homePage.style.display = "none";
-          aboutPage.style.display = "none";
-        } else {
-          alert("Please log in first.");
-        }
-      });
-
-      // Show Home Page
-      homeLink.addEventListener("click", function () {
-        if (isLoggedIn) {
-          homePage.style.display = "block";
-          aboutPage.style.display = "none";
-          labsPage.style.display = "none";
-        }
-      });
+      }
     </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Log In</h2>
+      <p>
+        Don't have an account?
+        <a href="signup.html" class="signup-link">Sign up</a>
+      </p>
+
+      <div class="social-login">
+        <button class="social-google">
+          <img
+            src="images/search.png"
+            alt="Google Icon"
+            style="width: 20px; margin-right: 5px"
+          />
+          Google
+        </button>
+        <button class="social-facebook">
+          <img
+            src="images/facebook.png"
+            alt="Facebook Icon"
+            style="width: 20px; margin-right: 5px"
+          />
+          Facebook
+        </button>
+      </div>
+      <div class="social-login">
+        <button class="social-github">
+          <img
+            src="images/github.png"
+            alt="Github Icon"
+            style="width: 20px; margin-right: 5px"
+          />
+          Github
+        </button>
+        <button class="social-more">
+          <img
+            style="width: 20px; margin-right: 5px"
+            src="images/more.png"
+            alt="More"
+          />
+          More
+        </button>
+      </div>
+
+      <div class="or">OR</div>
+
+      <input type="email" placeholder="email" required />
+      <input type="password" placeholder="password" required />
+
+      <button class="login-btn" onclick="handleLogin()">Login</button>
+
+      <a href="#" class="forgot-password">Forgot Password?</a>
+
+      <!-- Thông báo lỗi khi đăng nhập thất bại -->
+      <div class="error-message">
+        Incorrect email or password. Please try again.
+      </div>
+    </div>
   </body>
 </html>
