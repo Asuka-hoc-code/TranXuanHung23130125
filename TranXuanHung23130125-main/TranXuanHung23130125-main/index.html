@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Form</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f1f1f1;
+      }
+
+      .login-container {
+        width: 350px; /* Độ rộng của form */
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+      }
+
+      .login-container h2 {
+        margin-bottom: 15px;
+        font-size: 24px; /* Kích thước chữ tiêu đề */
+      }
+
+      .login-container p {
+        margin: 10px 0 20px 0;
+        font-size: 14px; /* Kích thước chữ của câu hỏi */
+      }
+
+      .social-login {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .social-login button {
+        flex: 1; /* Đảm bảo các nút có cùng kích thước */
+        padding: 10px;
+        border: 2px solid #000000;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 0 5px; /* Khoảng cách giữa các nút */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold; /* Đậm chữ */
+      }
+
+      .social-google {
+        background-color: white;
+        color: #000000; /* Màu Google */
+        border: 1px solid #000000; /* Đường viền */
+      }
+
+      .social-facebook {
+        background-color: white; /* Màu Facebook */
+        color: #000000;
+        border: 1px solid #000000;
+      }
+
+      .social-github {
+        background-color: #ffffff; /* Màu Github */
+        color: #000000;
+        border: 1px solid #000000;
+      }
+
+      .social-more {
+        background-color: #ffffff; /* Màu more */
+        color: #000000;
+        border: 1px solid #000000;
+      }
+
+      .or {
+        margin: 15px 0;
+        font-size: 14px;
+      }
+
+      input[type="email"],
+      input[type="password"] {
+        width: 95%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .login-btn {
+        width: 100%;
+        padding: 10px;
+        background-color: #28a745; /* Màu nút đăng nhập */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold; /* Đậm chữ */
+      }
+
+      .forgot-password {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007bff; /* Màu link quên mật khẩu */
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+
+      .signup-link {
+        color: #28a745; /* Màu link đăng ký */
+        text-decoration: none;
+      }
+
+      .signup-link:hover {
+        text-decoration: underline;
+      }
+
+      .error-message {
+        color: red;
+        margin-top: 10px;
+        display: none;
+      }
+    </style>
+
+    <script>
+      function handleLogin() {
+        // Lấy dữ liệu đăng nhập từ Local Storage
+        const savedEmail = localStorage.getItem("email");
+        const savedPassword = localStorage.getItem("password");
+
+        // Lấy giá trị từ form đăng nhập
+        const emailInput = document.querySelector('input[type="email"]').value;
+        const passwordInput = document.querySelector(
+          'input[type="password"]'
+        ).value;
+
+        // Kiểm tra thông tin đăng nhập
+        if (emailInput === savedEmail && passwordInput === savedPassword) {
+          // Đăng nhập thành công và chuyển hướng đến trang chủ
+          window.location.href = "home.html";
+        } else {
+          // Hiển thị thông báo lỗi nếu đăng nhập thất bại
+          document.querySelector(".error-message").style.display = "block";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h2>Log In</h2>
+      <p>
+        Don't have an account?
+        <a href="signup.html" class="signup-link">Sign up</a>
+      </p>
+
+      <div class="social-login">
+        <button class="social-google">
+          <img
+            src="images/search.png"
+            alt="Google Icon"
+            style="width: 20px; margin-right: 5px"
+          />
+          Google
+        </button>
+        <button class="social-facebook">
+          <img
+            src="images/facebook.png"
+            alt="Facebook Icon"
+            style="width: 20px; margin-right: 5px"
+          />
+          Facebook
+        </button>
+      </div>
+      <div class="social-login">
+        <button class="social-github">
+          <img
+            src="images/github.png"
+            alt="Github Icon"
+            style="width: 20px; margin-right: 5px"
+          />
+          Github
+        </button>
+        <button class="social-more">
+          <img
+            style="width: 20px; margin-right: 5px"
+            src="images/more.png"
+            alt="More"
+          />
+          More
+        </button>
+      </div>
+
+      <div class="or">OR</div>
+
+      <input type="email" placeholder="email" required />
+      <input type="password" placeholder="password" required />
+
+      <button class="login-btn" onclick="handleLogin()">Login</button>
+
+      <a href="#" class="forgot-password">Forgot Password?</a>
+
+      <!-- Thông báo lỗi khi đăng nhập thất bại -->
+      <div class="error-message">
+        Incorrect email or password. Please try again.
+      </div>
+    </div>
+  </body>
+</html>

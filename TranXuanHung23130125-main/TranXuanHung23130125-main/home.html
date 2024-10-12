@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        background-color: #f1f1f1;
+      }
+
+      /* Định dạng menu bên trái */
+      .sidebar {
+        width: 250px;
+        height: 100%;
+        background-color: #333;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .sidebar h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 22px;
+        border-bottom: 2px solid #555;
+        padding-bottom: 10px;
+      }
+
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        margin: 15px 0;
+        display: block;
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      .sidebar a:hover {
+        background-color: #7e6262;
+      }
+
+      /* Nội dung bên phải */
+      
+      .content {
+        text-align: center;
+        flex: 1;
+        padding: 20px;
+      }
+
+      .content h2 {
+        font-size: 28px;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      /* Khóa học */
+      .courses {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .course {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(53, 49, 49, 0.1);
+        overflow: hidden;
+        width: 300px;
+        transition: transform 0.2s;
+      }
+
+      .course:hover {
+        transform: scale(1.05);
+      }
+
+      .course img {
+        width: 100%;
+        height: auto;
+      }
+
+      .course h3 {
+        padding: 15px;
+        font-size: 20px;
+        color: #333;
+        text-align: center;
+        border-top: 1px solid #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Menu bên trái -->
+    <div class="sidebar">
+      <h2>Menu</h2>
+      <a href="#">Home</a>
+      <a href="cv.html">Profile</a>
+      <a href="#">Settings</a>
+      <a href="exercise.html">Exercise</a>
+      <a href="index.html">Log out</a>
+      <!-- Labs Page -->
+    <div class="page" id="labs-page">
+      <h2>Labs</h2>
+      <ul>
+        <li>
+          <a
+            href="https://asuka-hoc-code.github.io/TranXuanHung23130125/"
+            id="labs1-link"
+            >Labs 1</a
+          >
+        </li>
+        <li><a href="exercise.html" id="labs2-link">Labs 2</a></li>
+        <li><a href="#" id="labs3-link">Labs 3</a></li>
+      </ul>
+    </div>
+    </div>
+
+    <!-- Nội dung chính bên phải -->
+    <div class="content">
+      <h2>Khóa học gợi ý </h2>
+      <div class="courses">
+        <div class="course">
+          <a href="java.html">
+            <img src="images/java1.pnng.jpg" alt="Java cho người mới bắt đầu" />
+            <h3>Java cho người mới bắt đầu</h3>
+          </a>
+        </div>
+        <div class="course">
+          <a href="python.html">
+            <img src="images/python.jpg" alt="Python cho người mới bắt đầu" />
+            <h3>Python cho người mới bắt đầu</h3>
+          </a>
+        </div>
+        <div class="course">
+          <a href="c++.html">
+            <img src="images/c++.avif" alt="Thư viện chuẩn C++" />
+            <h3>Thư viện chuẩn C++</h3>
+          </a>
+        </div>
+        <div class="course">
+          <a href="mysql.html">
+            <img src="images/sql.png" alt="Mysql cơ bản" />
+            <h3>Mysql cơ bản</h3>
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
