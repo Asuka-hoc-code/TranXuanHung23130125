@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certification Recommendations</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: radial-gradient(
+          circle,
+          rgba(240, 240, 250, 1) 0%,
+          rgba(217, 234, 250, 1) 100%
+        );
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 30px;
+        background-color: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      h2 {
+        font-size: 26px;
+        margin-bottom: 40px;
+        color: #2c3e50;
+        font-weight: 600;
+      }
+      .courses {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .course-card {
+        background-color: white;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        width: 23%;
+        text-align: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease,
+          background 0.3s ease;
+        background: linear-gradient(145deg, #ffffff, #f7f7f7);
+      }
+      .course-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(145deg, #e6f0ff, #ffffff);
+      }
+      .course-card img {
+        width: 80px;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease;
+      }
+      .course-card:hover img {
+        transform: scale(1.1);
+      }
+      .course-card h3 {
+        font-size: 18px;
+        margin: 15px 0;
+        color: #34495e;
+        font-weight: 600;
+      }
+      .course-card p {
+        font-size: 14px;
+        color: #7f8c8d;
+        margin-bottom: 15px;
+      }
+      .course-card .rating {
+        margin: 10px 0;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      .course-card .rating span {
+        color: #ffb400;
+      }
+      .personalize {
+        background-color: white;
+        margin-top: 40px;
+        padding: 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+      .personalize:hover {
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      }
+      .personalize button {
+        padding: 12px 30px;
+        border: none;
+        background: linear-gradient(45deg, #0073e6, #00c6ff);
+        color: white;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      .personalize button:hover {
+        background: linear-gradient(45deg, #005bb5, #00a3d4);
+      }
+
+      @media (max-width: 768px) {
+        .courses {
+          flex-direction: column;
+          align-items: center;
+        }
+        .course-card {
+          width: 80%;
+          margin-bottom: 20px;
+        }
+      }
+
+      @media (max-width: 1200px) {
+        .course-card {
+          width: 45%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Based on your certification interests, we recommend</h2>
+      <div class="courses">
+        <div class="course-card">
+          <img src="images-lab4/j1.png" alt="Java Logo" />
+          <h3>Oracle Certified Associate Java Programmer (OCAJP) 1Z0-808</h3>
+          <p>Andrii Piatakha, Learn IT University</p>
+          <div class="rating"><span>★★★★☆</span> 4.6 (438)</div>
+        </div>
+        <div class="course-card">
+          <img src="images-lab4/j2.jpg" alt="Java Logo" />
+          <h3>Oracle Java Certification - Pass the Associate 1Z0-808 Exam</h3>
+          <p>Tim Buchalka's Learn Programming Academy, Goran Lochert</p>
+          <div class="rating"><span>★★★★☆</span> 4.6 (5,906)</div>
+        </div>
+        <div class="course-card">
+          <img src="images-lab4/j3.png" alt="Java Logo" />
+          <h3>Complete Java SE 8 Developer Bootcamp - OCA Prep Included</h3>
+          <p>Intertech Training, Jeff Jensen</p>
+          <div class="rating"><span>★★★★☆</span> 4.6 (9,726)</div>
+        </div>
+        <div class="course-card">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Spring_Framework_Logo_2018.svg/64px-Spring_Framework_Logo_2018.svg.png"
+            alt="Spring Logo"
+          />
+          <h3>Spring Professional Certification Exam Tutorial - Module 02</h3>
+          <p>Dominik Cebula</p>
+          <div class="rating"><span>★★★★☆</span> 4.6 (1,121)</div>
+        </div>
+      </div>
+
+      <div class="personalize">
+        <h3>Personalize your learning experience</h3>
+        <p>
+          Add your occupation and interests to get better content
+          recommendations.
+        </p>
+        <button>Add occupation and interests</button>
+      </div>
+    </div>
+  </body>
+</html>
