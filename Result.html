@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result Page</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+        text-align: center;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .header {
+        margin-top: 50px;
+      }
+      .header h1 {
+        font-size: 2.5em;
+        font-weight: 700;
+        color: #333;
+      }
+      .profile-pic {
+        margin: 20px auto;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid #fff;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 50px;
+      }
+      .section {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        margin: 10px;
+        padding: 20px;
+        flex: 1;
+        min-width: 300px;
+        max-width: 45%;
+      }
+      .section h2 {
+        font-size: 1.8em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .section h2::after {
+        content: "";
+        width: 50px;
+        height: 3px;
+        background-color: #007bff;
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .card {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 15px 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+      .card h3 {
+        font-size: 1.4em;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      .card p {
+        font-size: 1em;
+        color: #666;
+      }
+      .card img {
+        width: 100%; /* Đặt chiều rộng của hình ảnh bằng 100% chiều rộng của card */
+        height: 200px; /* Đặt chiều cao cố định cho hình ảnh */
+        object-fit: cover; /* Đảm bảo hình ảnh lấp đầy không gian mà không bị biến dạng */
+        border-radius: 10px; /* Thêm bo góc cho hình ảnh nếu cần */
+      }
+      .exit-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .exit-button:hover {
+        background-color: #c82333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Welcome to Result</h1>
+        <div class="profile-pic">
+          <img
+            alt="Profile picture of a person in traditional attire"
+            src="images/hungzl.jpg"
+          />
+        </div>
+      </header>
+      <main class="content">
+        <section class="section">
+          <h2>Web nhóm</h2>
+          <div class="card">
+            <h3>About Page</h3>
+            <img
+              src="images/Screenshot 2025-01-19 182029.png"
+              alt="Screenshot of the About Page"
+            />
+            <p>
+              This page is used to introduce information about group members.
+            </p>
+          </div>
+        </section>
+        <section class="section">
+          <h2>Web Project</h2>
+          <div class="card">
+            <h3>Bàn phím Page</h3>
+            <img
+              src="images/Screenshot 2025-01-19 182118.png"
+              alt="Screenshot of Keyboard Page"
+            />
+            <p>
+              This page introduces keyboards and detailed information about each
+              keyboard.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Chuột Page</h3>
+            <img
+              src="images/Screenshot 2025-01-19 182128.png"
+              alt="Screenshot of Mouse Page"
+            />
+            <p>
+              This page introduces mice and detailed information about each
+              mouse.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Tai nghe Page</h3>
+            <img
+              src="images/Screenshot 2025-01-19 182137.png"
+              alt="Screenshot of Headset Page"
+            />
+            <p>
+              This page introduces headsets and detailed information about each
+              headset.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <button class="exit-button" onclick="goHome()">Thoát</button>
+    <script>
+      function goHome() {
+        window.location.href = "home.html"; // Redirect to home page
+      }
+    </script>
+  </body>
+</html>

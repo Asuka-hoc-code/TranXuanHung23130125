@@ -1,0 +1,222 @@
+<html>
+  <head>
+    <title>Khóa học gợi ý</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background-color: #f0f0f0;
+      }
+      .container {
+        display: flex;
+      }
+      .sidebar {
+        width: 250px;
+        background-color: #333;
+        color: white;
+        padding: 20px;
+        height: 100vh;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .sidebar h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+      .sidebar h2:hover {
+        color: #ddd;
+      }
+      .sidebar hr {
+        width: 100%;
+        border: 0;
+        border-top: 1px solid #555;
+        margin-bottom: 20px;
+      }
+      .sidebar a {
+        color: white;
+        text-decoration: none;
+        display: block;
+        margin: 10px 0;
+        font-size: 16px;
+        text-align: left;
+        width: 100%;
+        padding-left: 20px;
+        transition: color 0.3s;
+      }
+      .sidebar a:hover {
+        color: #ddd;
+      }
+      .sidebar .menu,
+      .sidebar .labs {
+        width: 100%;
+      }
+      .sidebar .menu ul,
+      .sidebar .labs ul {
+        list-style-type: none;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-out;
+      }
+      .sidebar .menu ul li,
+      .sidebar .labs ul li {
+        margin: 10px 0;
+      }
+      .sidebar .menu ul li a,
+      .sidebar .labs ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        text-align: left;
+        padding-left: 20px;
+        display: block;
+        transition: color 0.3s;
+      }
+      .sidebar .menu ul li a:hover,
+      .sidebar .labs ul li a:hover {
+        color: #ddd;
+      }
+      .content {
+        flex-grow: 1;
+        padding: 20px;
+      }
+      .content h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+      .courses {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .course-card {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 300px;
+        transition: transform 0.2s;
+      }
+      .course-card:hover {
+        transform: translateY(-10px);
+      }
+      .course-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .course-card a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+        font-size: 16px;
+      }
+      .course-card a:hover {
+        text-decoration: underline;
+      }
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+        .sidebar {
+          width: 100%;
+          height: auto;
+        }
+        .courses {
+          flex-direction: column;
+          align-items: center;
+        }
+        .course-card {
+          width: 100%;
+        }
+      }
+    </style>
+    <script>
+      function toggleMenu() {
+        var menuList = document.getElementById("menuList");
+        if (
+          menuList.style.maxHeight === "0px" ||
+          menuList.style.maxHeight === ""
+        ) {
+          menuList.style.maxHeight = menuList.scrollHeight + "px";
+        } else {
+          menuList.style.maxHeight = "0px";
+        }
+      }
+
+      function toggleLabs() {
+        var labsList = document.getElementById("labsList");
+        if (
+          labsList.style.maxHeight === "0px" ||
+          labsList.style.maxHeight === ""
+        ) {
+          labsList.style.maxHeight = labsList.scrollHeight + "px";
+        } else {
+          labsList.style.maxHeight = "0px";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="menu">
+          <h2 onclick="toggleMenu()">Menu</h2>
+          <hr />
+          <ul id="menuList">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="cv.html">Profile</a></li>
+            <li><a href="Result.html">Result</a></li>
+            <li><a href="exercise.html">Exercise</a></li>
+            <li><a href="index.html">Log out</a></li>
+          </ul>
+        </div>
+        <div class="labs">
+          <h2 onclick="toggleLabs()">Labs</h2>
+          <hr />
+          <ul id="labsList">
+            <li><a href="index.html">Labs 1</a></li>
+            <li><a href="exercise.html">Labs 2</a></li>
+            <li><a href="home.html">Labs 3</a></li>
+            <li><a href="lab4.html">Labs 4</a></li>
+            <li><a href="lab5.html">Labs 5</a></li>
+            <li><a href="lab6.html">Labs 6</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <h1>Khóa học gợi ý</h1>
+        <div class="courses">
+          <div class="course-card">
+            <img src="images/java1.pnng.jpg" alt="Java course image" />
+            <a href="java.html">Java cho người mới bắt đầu</a>
+          </div>
+          <div class="course-card">
+            <img src="images/python.jpg" alt="Python course image" />
+            <a href="python.html">Python cho người mới bắt đầu</a>
+          </div>
+          <div class="course-card">
+            <img src="images/c++.avif" alt="C++ course image" />
+            <a href="c++.html">Thư viện chuẩn C++</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
